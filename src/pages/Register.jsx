@@ -20,7 +20,6 @@ const Register = () => {
     } else {
       setPasswordError('');
     }
-    // Jeśli zmieniamy adres e-mail, usuwamy komunikat błędu e-maila
     if (e.target.name === 'email') {
       setEmailError('');
     }
