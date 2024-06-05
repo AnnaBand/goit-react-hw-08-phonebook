@@ -20,7 +20,7 @@ export const UserMenu = () => {
   }));
 
   return (
-    <div>
+    <div className={css.userMenu}>
       <p className={css.welcome}>Welcome, {user.name}</p>
       <ColorButton
         className={css.userBtn}

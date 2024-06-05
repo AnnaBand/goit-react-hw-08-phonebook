@@ -1,8 +1,15 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
 .welcome {
-    margin-bottom: 15px;
-    font-weight: 600;
-  }
-  
-  .userBtn {
-    font-weight: 700;
-  }
+  margin-right: 15px;
+  font-weight: 600;
+}
+
+.userBtn {
+  font-weight: 700;
+}
