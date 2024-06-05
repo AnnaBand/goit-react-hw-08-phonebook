@@ -64,7 +64,7 @@ export const Contacts = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        color: '#333',
+        color: '#3a3a3a',
         margin: 20,
         borderRadius: 10,
         paddingBottom: 30,
