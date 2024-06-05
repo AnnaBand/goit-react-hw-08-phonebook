@@ -22,7 +22,6 @@ export const register = createAsyncThunk(
         credentials
       );
 
-      // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       Notify.success('Register successful!', {
         position: 'left-top',
@@ -45,7 +44,7 @@ export const logIn = createAsyncThunk(
         '/users/login',
         credentials
       );
-      // After successful login, add the token to the HTTP header
+
       setAuthHeader(res.data.token);
       Notify.success('Login successful!', {
         position: 'left-top',
@@ -69,7 +68,7 @@ export const logOut = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await axios.post('/users/logout');
-      // After a successful logout, remove the token from the HTTP header
+
       clearAuthHeader();
       Notify.success('Logout successful!', {
         position: 'left-top',
@@ -89,19 +88,18 @@ export const logOut = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    // Reading the token from the state via getState()
+
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      // If there is no token, exit without performing any request
+
       return thunkAPI.rejectWithValue(
         'Unable to fetch user'
       );
     }
 
     try {
-      // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
       const res = await axios.get('/users/current');
       return res.data;

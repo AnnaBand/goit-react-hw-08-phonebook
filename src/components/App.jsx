@@ -20,7 +20,7 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  console.log('App component rendered'); // Dodanie console.log
+  console.log('App component rendered');
 
   return isRefreshing ? (
     <b>Refreshing user...</b>
