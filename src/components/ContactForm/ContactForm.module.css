@@ -1,7 +1,7 @@
 .form {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #b74848;
     width: 100%;
     margin-bottom: 25px;
   }
@@ -18,7 +18,7 @@
   
   .formInput {
     margin: 0 auto;
-    width: 51%;
+    width: 52%;
     font-size: 15px;
     padding: 10px;
   }
