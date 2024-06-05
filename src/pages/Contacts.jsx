@@ -12,21 +12,21 @@ import {
   selectContacts,
   selectFilters,
 } from '../redux/selectors';
+import { selectIsLoggedIn } from '../redux/auth/selectors';
 
 export const Contacts = () => {
   const dispatch = useDispatch();
   const { contacts } = useSelector(selectContacts);
   const { filter } = useSelector(selectFilters);
-  const [isEditModalOpen, setIsEditModalOpen] =
-    useState(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editId, setEditId] = useState('');
 
-  // eslint-disable-next-line
   useEffect(() => {
-    // eslint-disable-next-line
-    dispatch(fetchContacts());
-    // eslint-disable-next-line
-  }, []);
+    if (isLoggedIn) {
+      dispatch(fetchContacts());
+    }
+  }, [dispatch, isLoggedIn]);
 
   const handleDelete = id => {
     dispatch(deleteContact(id));
