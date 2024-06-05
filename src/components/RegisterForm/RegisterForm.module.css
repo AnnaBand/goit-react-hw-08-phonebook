@@ -1,0 +1,34 @@
+.form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .registerInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .label {
+    width: 30%;
+    color: #b74848;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .inputReg {
+    width: 30%;
+    margin: 0 auto;
+  }
+
+.loginBtn {
+    margin-top: 30px;
+    text-align: center;
+}

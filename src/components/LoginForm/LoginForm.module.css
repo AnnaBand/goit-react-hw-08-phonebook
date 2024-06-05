@@ -1,0 +1,22 @@
+.form {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .label {
+    margin-bottom: 20px;
+    color: #b74848;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .loginBtn {
+    text-align: center;
+    margin-top: 30px;
+  }
