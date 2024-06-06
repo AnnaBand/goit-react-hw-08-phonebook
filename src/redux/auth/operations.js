@@ -2,10 +2,9 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 
-axios.defaults.baseURL =
-  'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-const setAuthHeader = token => {
+const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -17,10 +16,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post(
-        '/users/signup',
-        credentials
-      );
+      const res = await axios.post('/users/signup', credentials);
 
       setAuthHeader(res.data.token);
       Notify.success('Register successful!', {
@@ -40,10 +36,7 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post(
-        '/users/login',
-        credentials
-      );
+      const res = await axios.post('/users/login', credentials);
 
       setAuthHeader(res.data.token);
       Notify.success('Login successful!', {
@@ -52,12 +45,12 @@ export const logIn = createAsyncThunk(
 
       return res.data;
     } catch (err) {
-      Notify.failure(
-        'Please enter correct login details!',
-        {
+      if (err.message) {
+        Notify.failure('Please enter correct login details!', {
           position: 'left-top',
-        }
-      );
+        });
+      }
+
       return thunkAPI.rejectWithValue(err.message);
     }
   }
@@ -74,12 +67,12 @@ export const logOut = createAsyncThunk(
         position: 'left-top',
       });
     } catch (err) {
-      Notify.failure(
-        "We've encountered an error, please try again!",
-        {
+      if (err.message) {
+        Notify.failure("We've encountered an error, please try again!", {
           position: 'left-top',
-        }
-      );
+        });
+      }
+
       return thunkAPI.rejectWithValue(err.message);
     }
   }
@@ -88,15 +81,12 @@ export const logOut = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
 
-      return thunkAPI.rejectWithValue(
-        'Unable to fetch user'
-      );
+      return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
     try {
@@ -104,12 +94,6 @@ export const refreshUser = createAsyncThunk(
       const res = await axios.get('/users/current');
       return res.data;
     } catch (err) {
-      Notify.failure(
-        "We've encountered an error, please try again!",
-        {
-          position: 'left-top',
-        }
-      );
       return thunkAPI.rejectWithValue(err.message);
     }
   }
